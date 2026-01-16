@@ -3,7 +3,7 @@ package il.co.or.tictactoe
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.appcompat.app.AppCompatActivity
 import il.co.or.tictactoe.model.GameResult
 import il.co.or.tictactoe.model.Player
@@ -11,7 +11,7 @@ import il.co.or.tictactoe.viewmodel.GameViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: GameViewModel by viewModels()
+    private lateinit var viewModel: GameViewModel
 
     private lateinit var statusText: TextView
     private lateinit var playAgainButton: Button
@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         statusText = findViewById(R.id.statusText)
         playAgainButton = findViewById(R.id.playAgainButton)
+
+        viewModel = ViewModelProvider(this)[GameViewModel::class.java]
 
         cells = listOf(
             findViewById(R.id.cell0),
