@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "il.co.or.tictactoe"
-    compileSdk = 36
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "il.co.or.tictactoe"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -40,7 +40,6 @@ android {
         jvmTarget = "17"
     }
 
-    // אנחנו ב-XML Views => Compose חייב להיות false
     buildFeatures {
         compose = false
     }
