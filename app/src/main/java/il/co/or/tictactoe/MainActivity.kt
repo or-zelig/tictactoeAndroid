@@ -1,37 +1,28 @@
 package il.co.or.tictactoe
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import il.co.or.tictactoe.ui.theme.TictactoeTheme
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var cells: List<Button>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    }
 
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    TictactoeTheme {
-        Greeting("Android")
+        // Collect all 9 board buttons
+        cells = listOf(
+            findViewById(R.id.cell0),
+            findViewById(R.id.cell1),
+            findViewById(R.id.cell2),
+            findViewById(R.id.cell3),
+            findViewById(R.id.cell4),
+            findViewById(R.id.cell5),
+            findViewById(R.id.cell6),
+            findViewById(R.id.cell7),
+            findViewById(R.id.cell8)
+        )
     }
 }
