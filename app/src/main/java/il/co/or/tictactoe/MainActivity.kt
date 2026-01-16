@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
             findViewById(R.id.cell8)
         )
 
-        // Wire clicks: read index from android:tag and forward
         cells.forEach { button ->
             button.setOnClickListener { view ->
                 val index = when (val tag = view.tag) {
@@ -39,7 +38,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onCellClicked(index: Int) {
-        // Temporary placeholder to verify clicks work
+        // UI-only guard: don't overwrite a filled cell
+        if (cells[index].text.isNotEmpty()) return
+
+        // Temporary placeholder
         cells[index].text = "X"
     }
 }
