@@ -12,7 +12,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Collect all 9 board buttons
         cells = listOf(
             findViewById(R.id.cell0),
             findViewById(R.id.cell1),
@@ -24,5 +23,23 @@ class MainActivity : AppCompatActivity() {
             findViewById(R.id.cell7),
             findViewById(R.id.cell8)
         )
+
+        // Wire clicks: read index from android:tag and forward
+        cells.forEach { button ->
+            button.setOnClickListener { view ->
+                val index = when (val tag = view.tag) {
+                    is Int -> tag
+                    is String -> tag.toIntOrNull()
+                    else -> null
+                } ?: return@setOnClickListener
+
+                onCellClicked(index)
+            }
+        }
+    }
+
+    private fun onCellClicked(index: Int) {
+        // Temporary placeholder to verify clicks work
+        cells[index].text = "X"
     }
 }
